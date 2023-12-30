@@ -13,7 +13,7 @@ def getURL(fname, parameters):
     base_url = "https://www.alphavantage.co/query?"
     func_parameter = f"function={fname}"
 
-    return f'{base_url}{func_parameter}{parameters}&apikey=685BEOWCXWU9D3ZI'
+    return f'{base_url}{func_parameter}{parameters}&apikey=demo'
 
 # function get ticker from user
 def get_ticker(ticker_list):
