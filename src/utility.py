@@ -1,5 +1,7 @@
 import pandas as pd
 import requests
+from dotenv import load_dotenv
+import os
 import os.path
 
 # dictionary to story function names
@@ -14,7 +16,19 @@ def getURL(fname, parameters):
     base_url = "https://www.alphavantage.co/query?"
     func_parameter = f"function={fname}"
 
-    return f'{base_url}{func_parameter}{parameters}&apikey=685BEOWCXWU9D3ZI'
+    try:
+        #get API key
+        load_dotenv("../Resources/api_key.env")
+        api_key = os.getenv("alphavantage_api_key")
+
+        if api_key is None:
+            raise Exception("No Environment Configurations.")
+        
+    except Exception as ex:
+        print(f"Environment configurations not defined: {ex}")
+        return ""
+    
+    return f'{base_url}{func_parameter}{parameters}&apikey={api_key}'
 
 # function get ticker from user
 def get_ticker(ticker_list):
@@ -27,6 +41,9 @@ def get_ticker(ticker_list):
         try:
             search_url = getURL(function_names['SYMBOL_SEARCH'], search_params)
 
+            if not search_url:
+                return ("Issue with URL.")
+            
             ticker_results = requests.get(search_url).json()
 
             ticker_df = pd.DataFrame(ticker_results['bestMatches'])
