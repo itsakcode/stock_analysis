@@ -5,7 +5,8 @@ import os.path
 # dictionary to story function names
 function_names = {
     "TIME_SERIES_DAILY": "TIME_SERIES_DAILY",
-    "SYMBOL_SEARCH": "SYMBOL_SEARCH"
+    "SYMBOL_SEARCH": "SYMBOL_SEARCH",
+    "DIGITAL_CURRENCY_DAILY" : "DIGITAL_CURRENCY_DAILY"
 }
 
 # function to get full URL
@@ -13,7 +14,7 @@ def getURL(fname, parameters):
     base_url = "https://www.alphavantage.co/query?"
     func_parameter = f"function={fname}"
 
-    return f'{base_url}{func_parameter}{parameters}&apikey=demo'
+    return f'{base_url}{func_parameter}{parameters}&apikey=685BEOWCXWU9D3ZI'
 
 # function get ticker from user
 def get_ticker(ticker_list):
@@ -59,8 +60,10 @@ def prepare_ticker_data(ticker):
         ticker_results = requests.get(getURL(function_names['TIME_SERIES_DAILY'], ticker_search_params)).json()
 
         ticker_data_df = pd.DataFrame(ticker_results['Time Series (Daily)']).T
+        ticker_data_df.reset_index(inplace=True)
 
         ticker_data_df.rename(columns={
+            'index': 'timestamp',
             '1. open': 'open',
             '2. high': 'high',
             '3. low': 'low',
@@ -73,5 +76,38 @@ def prepare_ticker_data(ticker):
         data_ready = True
     except Exception as ex:
         print(f"No data found for {ticker}, error {ex}")
+    
+    return data_ready
+
+# function to get crypto data
+def prepare_crypto_data(symbol):
+    if os.path.isfile("../Datasets/daily_"+symbol.upper()+".csv"):
+        return True
+
+    crypto_search_params = f"&symbol={symbol}&market=USD"
+    data_ready = False
+    try:
+        crypto_results = requests.get(getURL('DIGITAL_CURRENCY_DAILY', crypto_search_params)).json()
+        
+        crypto_data_df = pd.DataFrame(crypto_results['Time Series (Digital Currency Daily)']).T
+        crypto_data_df.reset_index(inplace=True)
+        crypto_data_df.columns
+
+        crypto_data_df.drop(['1b. open (USD)', '2b. high (USD)','3b. low (USD)', '4b. close (USD)'], axis=1, inplace=True)
+
+        crypto_data_df.rename(columns={
+                    'index': 'timestamp',
+                    '1a. open (USD)': 'open',
+                    '2a. high (USD)': 'high',
+                    '3a. low (USD)': 'low',
+                    '4a. close (USD)': 'close',
+                    '5. volume': 'volume',
+                    '6. market cap (USD)': 'marketCap'
+                }, inplace=True)
+
+        crypto_data_df.to_csv("../Datasets/daily_"+symbol.upper()+".csv")
+        data_ready = True
+    except Exception as ex:
+        print(f"No data found for {symbol}, error {ex}")
     
     return data_ready
