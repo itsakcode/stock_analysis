@@ -31,3 +31,18 @@ Correlation
 
 The stocks we are analyzing in this project are all technology based. So have attempted to see relation between these and see if each have any inter-dependency or correlation.
 
+### Installations
+
+You can use the project package to execute the stock_market jupiter notebook for your analysis. 
+
+Pre-requisite: Need to make sure you have Matplotlib and MPLFinance modules installed for timeseries/other and candlestick charts. 
+
+From Conda Environment run below commands, 
+
+```conda install mplfinance```  
+```conda install matplotlib```  
+
+From Python use below commands, 
+
+```pip install mplfinance```  
+```pip install -U matplotlib```  
