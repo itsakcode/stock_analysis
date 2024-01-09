@@ -12,6 +12,18 @@ AMZN - Amazon
 NFLX - Netflix  
 GOOG and GOOGL - Alphabet Inc.,  
 
+### Data Source
+
+Data used in this project is from [Alphavantage](https://www.alphavantage.co/). We do have functions to download data in realtime and store them as CSV to further use it. Since there is a 25 requests limit on API Calls. Below are some of the Endpoints used in this project, you can refer to [documentation](https://www.alphavantage.co/documentation/) on how this Endpoints are used. 
+
+```
+TIME_SERIES_DAILY  
+SYMBOL_SEARCH  
+DIGITAL_CURRENCY_DAILY  
+EARNINGS  
+EARNINGS_CALENDAR  
+```
+
 ### Analysis
 
 #### Time Series
@@ -41,6 +53,14 @@ From Conda Environment run below commands,
 
 ```conda install mplfinance```  
 ```conda install matplotlib```  
+
+If you want to extract realtime data from an API, we do have option for that and you need to update your API key in environment file under Resources. Replace demo with your API Key.
+
+```alphavantage_api_key="demo"```  
+
+### Future Enhancements
+
+
 
 From Python use below commands, 
 
