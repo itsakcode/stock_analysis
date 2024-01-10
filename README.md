@@ -25,7 +25,8 @@ TIME_SERIES_DAILY
 SYMBOL_SEARCH  
 DIGITAL_CURRENCY_DAILY  
 EARNINGS  
-EARNINGS_CALENDAR  
+EARNINGS_CALENDAR
+OVERVIEW  
 ```
 
 ### Data Analysis
@@ -57,6 +58,14 @@ Correlation
 The stocks we are analyzing in this project are all technology based. So have attempted to see relation between these and see if each have any inter-dependency or correlation.
 
 ![Corr_heatmap](https://github.com/itsakcode/stock_analysis/assets/93089647/75c5a32e-ac54-46e4-aa6e-dc593e30056b)
+
+#### Company Overview
+
+Company overview has more details on finance, performance and so on. Mostly focused on Market Cap and Number of Outstanding shares to analyze how much money and volume is shared between these companies. 
+
+
+![image](https://github.com/itsakcode/stock_analysis/assets/93089647/4d5ee853-8e1d-479f-baf8-f34ede2b7a56)
+![image](https://github.com/itsakcode/stock_analysis/assets/93089647/52498583-e8c4-43c8-8ba8-b2d1b213aa16)
 
 
 Details of all analysis is in the notebook. 
