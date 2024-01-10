@@ -9,6 +9,9 @@ from dateutil.relativedelta import relativedelta
 
 line_len = 70
 
+'''
+    User Operations list that can be performed by user
+'''
 operations = [
     "Slice to specific timeframe",
     "Calculate Moving Average for 2023",
@@ -16,6 +19,9 @@ operations = [
     "Exit and select new stock"
 ]
 
+'''
+    List of timeframes user can filter by
+'''
 timeframes = [
     "Today (D)",
     "Five Days (5D)",
@@ -26,7 +32,7 @@ timeframes = [
     "Five Years (5Y)"
 ]
 
-# dictionary to story function names
+# dictionary with function names for API Endpoints
 function_names = {
     "TIME_SERIES_DAILY": "TIME_SERIES_DAILY",
     "SYMBOL_SEARCH": "SYMBOL_SEARCH",
@@ -35,8 +41,17 @@ function_names = {
     "EARNINGS_CALENDAR": "EARNINGS_CALENDAR"
 }
 
-# function to get full URL
 def getURL(fname, parameters):
+    '''
+        Function to prepare URL for request
+
+        Args: 
+            fname - function name to request
+            parameters: additional parameters required for that request
+        
+        Exception: 
+            Will catch and display error if not able to prepare URL.
+    '''
     base_url = "https://www.alphavantage.co/query?"
     func_parameter = f"function={fname}"
 
@@ -54,8 +69,20 @@ def getURL(fname, parameters):
     
     return f'{base_url}{func_parameter}{parameters}&apikey={api_key}'
 
-# function get ticker from user
 def get_ticker(ticker_list):
+    '''
+        Function to get Ticker symbol to analyze. user will be prompted to 
+        select from list, if a list is passed to funtion. If not user will be
+        prompted to search for a symbol and then use API to search ticker symbols
+        and list the output for user to select.
+
+        Args: 
+            ticker_list - list of ticker symbols
+        
+        Exception: 
+            Will catch and display error if not able to search for a specific 
+            symbol
+    '''
     ticker_select = ""
 
     print("-" * line_len)
@@ -99,8 +126,22 @@ def get_ticker(ticker_list):
 
     return ticker_select
 
-# prepare data from passed ticker and write to csv
 def prepare_ticker_data(ticker, fname="TIME_SERIES_DAILY", interval=60):
+    '''
+        Function to get prepare data and store in csv.
+
+        Args: 
+            ticker - ticker symbol for which data is prepared
+            fname - type of data prepared either daily or intraday
+                default: TIME_SERIES_DAILY
+            interval - if intraday what is the interval, possible values 
+            5, 15, 30, 60
+                default: 60
+        
+        Exception: 
+            Will catch and display error if not able to get data for a specific 
+            symbol
+    '''
     file_name = ""
     url_params = ""
     match fname: 
@@ -108,7 +149,7 @@ def prepare_ticker_data(ticker, fname="TIME_SERIES_DAILY", interval=60):
             file_name = f"intraday_{interval}_{ticker.upper()}.csv"
             url_params = F"&symbol={ticker}&interval={interval}min&outputsize=full"
         case _:
-            file_name = "daily_"+ticker.upper()+".csv"
+            file_name = "daily_adjusted_"+ticker.upper()+".csv"
             url_params = f"&symbol={ticker}&outputsize=full"
 
     if os.path.isfile("../Datasets/" + file_name):
@@ -143,8 +184,17 @@ def prepare_ticker_data(ticker, fname="TIME_SERIES_DAILY", interval=60):
     
     return data_ready
 
-# function to get crypto data
 def prepare_crypto_data(symbol):
+    '''
+        Function to get prepare data for crypto and store in csv.
+
+        Args: 
+            symbol - crypto symbol for which data is prepared
+        
+        Exception: 
+            Will catch and display error if not able to get data for a specific 
+            symbol
+    '''
     if os.path.isfile("../Datasets/daily_"+symbol.upper()+".csv"):
         return True
 
@@ -224,6 +274,7 @@ def getYNInput(inputStatment):
         except ValueError:
             print("\nInvalid input. Please enter an Y or N.\n")
 
+# below functions are future enhancements.
 def get_operation():  
     print("-" * line_len)
     print(f"{'***** Analysis *****':^70}")
