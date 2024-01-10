@@ -1,6 +1,6 @@
 # STOCK ANALYSIS
 
-### What is it?
+### Project Details
 
 Stock dataset is not a complex dataset with respect to content and amount, actually it is just 2 things that is needed datetime and price, but analyzing the price is the critical part and helps to put our money on risk free and profitable stocks. It is not an overnight trick, it takes lot and lots of analysis to understand the trends, markets, and other factors. But there is always an unexpected factors which can impact adversely. We just need to understand we can analyze and invest our money on the historical data under known normal factors. 
 
@@ -11,6 +11,10 @@ AAPL - Apple
 AMZN - Amazon  
 NFLX - Netflix  
 GOOG and GOOGL - Alphabet Inc.,  
+
+### Presentation
+
+You can find a presentation explaining our project [here](https://docs.google.com/presentation/d/1U0djHwwD6WavXWna53xNfx54ahi5zLCSaJJjr2dhFJ0/edit?usp=sharing)
 
 ### Data Source
 
