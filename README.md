@@ -35,7 +35,8 @@ OVERVIEW
 
 Important analysis for a stock is time series, analyzing historical data, trends and any major changes. Reasons for any major changes or frequent changes. All these helps to predict or at least undetstand the stock over a period of time. 
 
-![all_timeseries](https://github.com/itsakcode/stock_analysis/assets/93089647/e6feca54-cf3f-45b1-83b0-3d062ccfd40e)
+![Avg  Stock Price   Volume at Diff  Time of Day (All Stocks)](https://github.com/itsakcode/stock_analysis/assets/93089647/5509b96f-c7ff-4b60-adbc-d96db85bea10)
+![Avg  Price Variation at Diff  Time of Day (All Stocks)](https://github.com/itsakcode/stock_analysis/assets/93089647/79013267-9b12-4187-9079-fe1559c77807)
 
 
 #### Moving Averages
