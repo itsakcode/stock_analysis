@@ -2,3 +2,8 @@ Project Scope:
 
 MAANGO
 
+1. genric timeseries chart 
+2. moving averages 
+3. candlestick chart
+4. Earnings and price forecasting
+5. earnings vs price vs volume
