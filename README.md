@@ -35,6 +35,15 @@ OVERVIEW
 
 Important analysis for a stock is time series, analyzing historical data, trends and any major changes. Reasons for any major changes or frequent changes. All these helps to predict or at least undetstand the stock over a period of time. 
 
+Time series of price and volume since IPO: 
+
+![AAPL volume since IPO](https://github.com/itsakcode/stock_analysis/assets/93089647/ee37c836-374a-4f76-bab2-e2c880b50d8d)
+![AAPL price since IPO](https://github.com/itsakcode/stock_analysis/assets/93089647/43e2624a-2cab-427a-8083-5cc99faf34d2)
+![META volume since IPO](https://github.com/itsakcode/stock_analysis/assets/93089647/e38509e8-933a-40ad-976f-8085eddb2d3a)
+![META price since IPO](https://github.com/itsakcode/stock_analysis/assets/93089647/738e33b0-5820-43ee-a041-6f016b3ea898)
+
+Time series of price and volume by hour: 
+
 ![Avg  Stock Price   Volume at Diff  Time of Day (All Stocks)](https://github.com/itsakcode/stock_analysis/assets/93089647/5509b96f-c7ff-4b60-adbc-d96db85bea10)
 ![Avg  Price Variation at Diff  Time of Day (All Stocks)](https://github.com/itsakcode/stock_analysis/assets/93089647/79013267-9b12-4187-9079-fe1559c77807)
 
@@ -59,6 +68,13 @@ Correlation
 The stocks we are analyzing in this project are all technology based. So have attempted to see relation between these and see if each have any inter-dependency or correlation.
 
 ![Corr_heatmap](https://github.com/itsakcode/stock_analysis/assets/93089647/75c5a32e-ac54-46e4-aa6e-dc593e30056b)
+
+#### Earnings
+
+Analyzing earnings another key factor, which determines how the companies are performing and how they are providing dividend per share. This helps to determine how strong the companies business is and strong growth. 
+
+![image](https://github.com/itsakcode/stock_analysis/assets/93089647/a072637a-a3de-492a-aea1-14d692c71040)
+
 
 #### Company Overview
 
